@@ -15,7 +15,7 @@
     </style>
 </head>
 
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<body class="bg-gray-100 flex items-center justify-center">
     <div class="w-full max-w-xs">
         <!-- Login Card -->
         <form action="{{ route('register.register') }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">

@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SesiController;
+use App\Http\Controllers\userDataController;
 use App\Http\Controllers\HomeUserControllerController;
 use App\Http\Controllers\KategoriController;
 
@@ -55,3 +56,13 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/register', [SesiController::class, 'showRegistForm'])->name('register');
 Route::post('/register', [SesiController::class, 'register'])->name('register.register');
+
+#show-data
+Route::get('/admin/manage-user', [userDataController::class, 'showUserData']) -> name('admin.manageUser');
+
+#update-data
+Route::get('/admin/edit/{id_user}', [userDataController::class, 'edit']) -> name('admin.editAkun');
+Route::put('/admin//update/{id_user}', [userDataController::class, 'update']) -> name('admin.update');
+
+#hapus-data
+Route::delete('/admin/delete/{id_user}', [userDataController::class, 'destroy']) -> name('admin.delete');
