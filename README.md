@@ -1,5 +1,5 @@
 # TempatSalim
-***
+
 ## Kelompok PinjemPak
 ### Anggota Kelompok
 1. Sekar Wening Candra Kinanthi
