@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name_gd');
             $table->string('price_gd');
             $table->integer("stock_gd");
-            $table->boolean('status_gd');
+            $table->boolean('status_gd')->default(1);
             $table->timestamps();
         });
     }

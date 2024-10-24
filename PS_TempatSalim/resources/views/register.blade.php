@@ -17,7 +17,7 @@
 
 <body class="bg-gray-100 flex items-center justify-center">
     <div class="w-full max-w-xs">
-        <!-- Login Card -->
+        <!-- Register -->
         <form action="{{ route('register.register') }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             @csrf
             <h2 class="text-center text-3xl font-bold text-orange-600 mb-4">TEMPAT SALIM</h2>

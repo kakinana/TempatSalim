@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('code_gd');
             $table->foreign('code_gd')->references('code_gd')->on('gedung');
 
-            $table->boolean("status_ct");
+            $table->boolean("status_ct")->default(1);
             $table->timestamps();
         });
     }
