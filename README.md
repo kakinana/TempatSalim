@@ -11,10 +11,21 @@
 Tujuan dari proyek ini adalah untuk:
 1. Meningkatkan efisiensi dalam peminjaman atau penyewaan gedung.
 2. Pemantauan peminjaman atau penyewaan gedung.
-3. 
 
 ### List Fitur
 **1. Admin**
   * Login
+  * Registrasi akun user
+  * Mengelola data pelanggan (user), kategori, dan unit gedung (CRUD)
+  * Memproses pengajuan peminjaman atau penyewaan gedung
+  * 
+    
 **2. User**
   * Login
+  * Homepage (melihat katalog gedung)
+  * Mengajukan peminjaman atau penyewaan gedung
+  * Melihat pengajuan peminjaman atau penyewaan gedung
+  * Melihat nominal denda (ketika terlambat membuat laporan pengembalian)
+  * Melihat profil akun
+  * Edit profil
+    
