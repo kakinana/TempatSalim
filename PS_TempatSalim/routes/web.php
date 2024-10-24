@@ -6,6 +6,7 @@ use App\Http\Controllers\SesiController;
 use App\Http\Controllers\userDataController;
 use App\Http\Controllers\HomeUserControllerController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\GedungController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,3 +67,36 @@ Route::put('/admin//update/{id_user}', [userDataController::class, 'update']) ->
 
 #hapus-data
 Route::delete('/admin/delete/{id_user}', [userDataController::class, 'destroy']) -> name('admin.delete');
+
+
+#MANAGE KATEGORI
+#show-category
+Route::get('/admin/kategori', [KategoriController::class, 'fetchCategory'])->name('kategori.show');
+
+#add-category
+Route::get('/admin/kategori/create', [KategoriController::class, 'create'])->name('kategori.create');
+Route::post('/admin/kategori', [KategoriController::class, 'store'])->name('kategori.store');
+
+#edit-category
+Route::get('/admin/kategori/{id_ct}/edit', [KategoriController::class, 'edit'])->name('kategori.edit');
+Route::put('/admin/kategori/{id_ct}', [KategoriController::class, 'update'])->name('kategori.update');
+
+#delete-category
+Route::delete('/admin/kategori/{id_ct}', [KategoriController::class, 'destroy'])->name('kategori.delete');
+
+
+#MANAGE GEDUNG
+
+#show-gedung
+Route::get('/admin/gedung', [GedungController::class, 'view'])->name('gedung.show');
+
+#add-gedung
+Route::get('/admin/gedung/create', [GedungController::class, 'create'])->name('gedung.create');
+Route::post('/admin/gedung', [GedungController::class, 'store'])->name('gedung.store');
+
+#edit-gedung
+Route::get('/gedung/{id_gd}/edit', [GedungController::class, 'edit'])->name('gedung.edit');
+Route::put('/gedung/{id_gd}', [GedungController::class, 'update'])->name('gedung.update');
+
+#delete-gedung
+Route::delete('/gedung/{id_gd}', [GedungController::class, 'destroy'])->name('gedung.delete');
