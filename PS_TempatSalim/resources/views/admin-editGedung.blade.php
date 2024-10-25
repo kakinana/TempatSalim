@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Gedung</title>
+    <title>Admin - Edit Gedung</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -12,7 +12,7 @@
     <div class="container mx-auto">
         <h1 class="text-3xl font-bold mb-6">Edit Gedung</h1>
 
-        <form action="{{ route('gedung.update', $gedung->id_gd) }}" method="POST">
+        <form action="{{ route('admin.updateGedung', $gedung->id) }}" method="POST">
             @csrf
             @method('PUT')
 
@@ -39,13 +39,13 @@
             <div class="form-group mb-4">
                 <label for="status_gd" class="block text-lg font-medium">Status</label>
                 <select name="status_gd" id="status_gd" class="mt-1 block w-full px-4 py-2 border rounded-md">
-                    <option value="1" {{ $gedung->status_gd ? 'selected' : '' }}>Available</option>
-                    <option value="0" {{ !$gedung->status_gd ? 'selected' : '' }}>Unavailable</option>
+                    <option value="1" {{ $gedung->status_gd ? 'selected' : '' }}>Tersedia</option>
+                    <option value="0" {{ !$gedung->status_gd ? 'selected' : '' }}>Tidak Tersedia</option>
                 </select>
             </div>
 
             <div class="flex justify-end space-x-4">
-                <a href="{{ route('gedung.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded-md">Cancel</a>
+                <a href="{{ route('admin.manageGedung') }}" class="bg-red-600 text-white px-4 py-2 rounded-md">Cancel</a>
                 <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md">Update Gedung</button>
             </div>
         </form>

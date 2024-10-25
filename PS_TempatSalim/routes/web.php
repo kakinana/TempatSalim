@@ -88,17 +88,16 @@ Route::delete('/admin/kategori/{id}', [KategoriController::class, 'destroy'])->n
 
 
 #MANAGE GEDUNG
-
 #show-gedung
-Route::get('/admin/gedung', [GedungController::class, 'view'])->name('gedung.show');
+Route::get('/admin/manage-gedung', [GedungController::class, 'showGedung'])->name('admin.manageGedung');
 
 #add-gedung
-Route::get('/admin/gedung/create', [GedungController::class, 'create'])->name('gedung.create');
-Route::post('/admin/gedung', [GedungController::class, 'store'])->name('gedung.store');
+Route::get('/admin/gedung/add', [GedungController::class, 'showGedungForm'])->name('admin.addGedung');
+Route::post('/admin/gedung/store', [GedungController::class, 'store'])->name('admin.storeGedung');
 
 #edit-gedung
-Route::get('/gedung/{id_gd}/edit', [GedungController::class, 'edit'])->name('gedung.edit');
-Route::put('/gedung/{id_gd}', [GedungController::class, 'update'])->name('gedung.update');
+Route::get('/admin/gedung/{id}/edit', [GedungController::class, 'edit'])->name('admin.editGedung');
+Route::put('/admin/gedung/{id}', [GedungController::class, 'update'])->name('admin.updateGedung');
 
 #delete-gedung
-Route::delete('/gedung/{id_gd}', [GedungController::class, 'destroy'])->name('gedung.delete');
+Route::delete('/admin/gedung/{id}', [GedungController::class, 'destroy'])->name('admin.deleteGedung');

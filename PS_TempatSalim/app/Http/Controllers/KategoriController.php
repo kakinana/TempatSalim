@@ -31,7 +31,7 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name_ct' => 'required|string|unique:kategori,name_ct',
+            'name_ct' => 'required|string|max:255|unique:kategori,name_ct',
             'detail_ct' => 'required|string',
             'status_ct' => 'required|boolean',
         ]);
@@ -57,7 +57,7 @@ class KategoriController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name_ct' => 'required|string',
+            'name_ct' => 'required|string|max:255|unique:kategori,name_ct',
             'detail_ct' => 'required|string',
             'status_ct' => 'required|boolean',
             //'code_gd' => 'required|exists:gedung,code_gd',
