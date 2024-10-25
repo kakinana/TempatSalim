@@ -10,13 +10,13 @@ class GedungController extends Controller
     public function view()
     {
         $gedung = Gedung::all(); // Fetch all buildings from the database
-        return view('admin-gedungData', compact('gedung'));
+        return view('admin-gedungData', ['gedung' => $gedung]);
     }
 
     // Show form to create a new building
-    public function create()
+    public function showAddForm()
     {
-        return view('gedung.create');
+        return view('admin-addGedung');
     }
 
     // Store a new building

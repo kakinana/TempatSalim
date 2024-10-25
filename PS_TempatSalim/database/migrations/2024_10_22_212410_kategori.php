@@ -12,13 +12,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('kategori', function (Blueprint $table) {
-            $table->unsignedBigInteger("id_ct")->unique();
-            $table->string('name_ct');
-
-            #fk id_gd
-            $table->unsignedBigInteger('code_gd');
-            $table->foreign('code_gd')->references('code_gd')->on('gedung');
-
+            $table->id();
+            $table->string('name_ct')->unique();
+            $table->string('detail_ct')->nullable();
             $table->boolean("status_ct")->default(1);
             $table->timestamps();
         });

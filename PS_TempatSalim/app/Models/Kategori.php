@@ -10,11 +10,14 @@ class Kategori extends Model
     use HasFactory;
 
     protected $table = 'kategori';
-    protected $primaryKey = 'id_ct';
-    protected $fillable = ['id_ct', 'name_ct', 'description', 'code_gd'];
+    protected $primaryKey = 'id';
+    protected $fillable = [ 
+        'name_ct', 
+        'description',
+    ];
 
     public function gedung()
     {
-        return $this->belongsTo(Gedung::class, 'code_gd', 'code_gd');
+        return $this->belongsToMany(Gedung::class, 'kategori_gedung', 'id_ct', 'id_gd');
     }
 }

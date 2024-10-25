@@ -12,8 +12,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('gedung', function (Blueprint $table) {
-            $table->id("id_gd");
-            $table->unsignedBigInteger("code_gd")->unique();
+            $table->id();
+            $table->string("code_gd")->unique();
             $table->string('name_gd');
             $table->string('price_gd');
             $table->integer("stock_gd");
