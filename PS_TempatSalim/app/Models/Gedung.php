@@ -10,18 +10,17 @@ class Gedung extends Model
     use HasFactory;
 
     protected $table = 'gedung';
-    protected $primaryKey = 'id_gd';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'name_gd',
         'code_gd',
         'price_gd',
         'stock_gd',
-        'status_gd'
     ];
     public function kategori()
     {
-        return $this->hasMany(Kategori::class, 'code_gd', 'code_gd');
+        return $this->belongsToMany(Kategori::class, 'kategori_gedung', 'id_gd', 'id_ct');
     }
 }
 

@@ -13,11 +13,11 @@ return new class extends Migration
 
             #fk id_user
             $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id_user')->on('users');
+            $table->foreign('id_user')->references('id_user')->on('users')->onUpdate('cascade')->onDelete('cascade');
 
             #fk code_gd
             $table->unsignedBigInteger('id_gd');
-            $table->foreign('id_gd')->references('id_gd')->on('gedung');
+            $table->foreign('id_gd')->references('id')->on('gedung')->onUpdate('cascade')->onDelete('cascade');
 
             $table->date("date_rent");
             $table->date("date_due");
