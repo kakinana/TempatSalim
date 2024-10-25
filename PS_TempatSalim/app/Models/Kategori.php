@@ -13,7 +13,8 @@ class Kategori extends Model
     protected $primaryKey = 'id';
     protected $fillable = [ 
         'name_ct', 
-        'description',
+        'detail_ct',
+        'status_ct'
     ];
 
     public function gedung()
