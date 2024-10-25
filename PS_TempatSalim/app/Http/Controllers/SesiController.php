@@ -19,7 +19,7 @@ class SesiController extends Controller
      */
     public function showRegistForm()
     {
-        return view('register');
+        return view('admin-register');
     }
 
     #untuk registrasi (Add User)
@@ -42,14 +42,14 @@ class SesiController extends Controller
         User::create([
             'name' => $request->name,
             'username' => $request->username,
-            'password' => Hash::make($request->password),
+            'password' => Crypt::encryptString($request->password),
             'no_telp' => $request->no_telp,
             'role' => $request->role,
         ]);
 
         DB::commit();
 
-        return redirect()->route('register')->with('success', 'Registrasi berhasil!');
+        return redirect()->route('admin.manageUser')->with('success', 'Registrasi berhasil!');
     }
 
     function indexSesi()
@@ -70,7 +70,7 @@ class SesiController extends Controller
 
         $user = User::where('username', $request->username)->first();
 
-        if ($user && Hash::check($request->password, $user->password)) {
+        if ($user && Crypt::decryptString($request->password) === ($user->password)) {
             Auth::login($user);
             $role = $user->role;
 

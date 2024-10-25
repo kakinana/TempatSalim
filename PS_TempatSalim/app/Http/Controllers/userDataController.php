@@ -6,6 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
 
 
@@ -16,6 +19,17 @@ class userDataController extends Controller
     {
         $user = User::where('role', 'user')->get();
 
+        foreach ($user as $u) {
+            foreach ($user as $u) {
+                try {
+                    // Attempt to decrypt; if it fails, we assume it's plain text
+                    $u->decrypted_password = Crypt::decryptString($u->password);
+                } catch (DecryptException $e) {
+                    // If decryption fails, assume the password is plain text
+                    $u->decrypted_password = $u->password;
+                }
+            }
+        }
         return view('admin-userData', ['user' => $user]);
     }
 

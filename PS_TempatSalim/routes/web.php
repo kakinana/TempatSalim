@@ -55,17 +55,19 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
+#MANAGE-USER
+#show-user
+Route::get('/admin/manage-user', [userDataController::class, 'showUserData']) -> name('admin.manageUser');
+
+#add-user
 Route::get('/register', [SesiController::class, 'showRegistForm'])->name('register');
 Route::post('/register', [SesiController::class, 'register'])->name('register.register');
 
-#show-data
-Route::get('/admin/manage-user', [userDataController::class, 'showUserData']) -> name('admin.manageUser');
-
-#update-data
+#update-user
 Route::get('/admin/edit/{id_user}', [userDataController::class, 'edit']) -> name('admin.editAkun');
 Route::put('/admin//update/{id_user}', [userDataController::class, 'update']) -> name('admin.update');
 
-#hapus-data
+#hapus-user
 Route::delete('/admin/delete/{id_user}', [userDataController::class, 'destroy']) -> name('admin.delete');
 
 

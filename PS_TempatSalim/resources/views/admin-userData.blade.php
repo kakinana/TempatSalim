@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tempat Salim - Edit Akun</title>
+    <title>Tempat Salim - Manage Akun</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -45,7 +45,7 @@
                             <td class="py-3 px-6 text-center">{{ $loop->iteration }}</td>
                             <td class="py-3 px-6 text-center">{{ $u->name }}</td>
                             <td class="py-3 px-6 text-center">{{ $u->username }}</td>
-                            <td class="py-3 px-6 text-center">{{ $u->password }}</td>
+                            <td class="py-3 px-6 text-center">{{ $u->decrypted_password }}</td>
                             <td class="py-3 px-6 text-center">{{ $u->no_telp }}</td>
                             <td class="py-3 px-6 text-center">
                                 <!-- Button Container with Flex and Spacing -->
