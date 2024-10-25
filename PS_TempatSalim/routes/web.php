@@ -73,18 +73,18 @@ Route::delete('/admin/delete/{id_user}', [userDataController::class, 'destroy'])
 
 #MANAGE KATEGORI
 #show-category
-Route::get('/admin/kategori', [KategoriController::class, 'fetchCategory'])->name('kategori.show');
+Route::get('/admin/manage-kategori', [KategoriController::class, 'showKategori'])->name('admin.manageKategori');
 
 #add-category
-Route::get('/admin/kategori/create', [KategoriController::class, 'create'])->name('kategori.create');
-Route::post('/admin/kategori', [KategoriController::class, 'store'])->name('kategori.store');
+Route::get('/admin/kategori/add', [KategoriController::class, 'showKategoriForm'])->name('admin.addKategori');
+Route::post('/admin/kategori/store', [KategoriController::class, 'store'])->name('admin.storeKategori');
 
 #edit-category
-Route::get('/admin/kategori/{id_ct}/edit', [KategoriController::class, 'edit'])->name('kategori.edit');
-Route::put('/admin/kategori/{id_ct}', [KategoriController::class, 'update'])->name('kategori.update');
+Route::get('/admin/kategori/{id}/edit', [KategoriController::class, 'showEditForm'])->name('admin.editKategori');
+Route::put('/admin/kategori/{id}', [KategoriController::class, 'update'])->name('admin.updateKategori');
 
 #delete-category
-Route::delete('/admin/kategori/{id_ct}', [KategoriController::class, 'destroy'])->name('kategori.delete');
+Route::delete('/admin/kategori/{id}', [KategoriController::class, 'destroy'])->name('kategori.delete');
 
 
 #MANAGE GEDUNG
