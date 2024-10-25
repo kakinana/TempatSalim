@@ -53,8 +53,7 @@
 
             <!-- Submit Button -->
             <div class="form-group text-center">
-                <button type="submit" class="w-full bg-green-600 text-white font-bold py-2 px-4 rounded-md shadow hover:bg-green-700 transition duration-300">
-                    Add Category
+                <button type="submit" class="w-full bg-green-600 text-white font-bold py-2 px-4 rounded-md shadow hover:bg-green-700 transition duration-300">Tambah Kategori
                 </button>
             </div>
         </form>

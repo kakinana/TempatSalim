@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 
 class GedungController extends Controller
 {
-    public function view()
+    public function showGedung()
     {
         $gedung = Gedung::all(); // Fetch all buildings from the database
         return view('admin-gedungData', ['gedung' => $gedung]);
     }
 
     // Show form to create a new building
-    public function showAddForm()
+    public function showGedungForm()
     {
         return view('admin-addGedung');
     }
@@ -25,8 +25,8 @@ class GedungController extends Controller
         // Validate input
         $request->validate([
             'name_gd' => 'required|string|max:255',
-            'code_gd' => 'required|numeric|unique:gedung,code_gd',
-            'price_gd' => 'required|numeric',
+            'code_gd' => 'required|string|unique:gedung,code_gd',
+            'price_gd' => 'required|integer|min:0',
             'stock_gd' => 'required|integer|min:0',
             'status_gd' => 'required|boolean'
         ]);
@@ -41,48 +41,46 @@ class GedungController extends Controller
         ]);
 
         // Redirect with a success message
-        return redirect()->route('gedung.create')->with('success', 'New building added successfully!');
+        return redirect()->route('admin.manageGedung')->with('success', 'New building added successfully!');
     }
 
     // Show a specific building (optional)
-    public function show($id_gd)
+    public function show($id)
     {
-        $gedung = Gedung::findOrFail($id_gd);
+        $gedung = Gedung::findOrFail($id);
         return view('gedung.show', compact('gedung'));
     }
 
-    // Show edit form (optional)
-    public function edit($id_gd)
+    public function edit($id)
     {
-        $gedung = Gedung::findOrFail($id_gd);
-        return view('admin-gedungData', compact('gedung'));
+        $gedung = Gedung::findOrFail($id);
+        return view('admin-editGedung', compact('gedung'));
     }
 
-    // Update an existing building (optional)
-    public function update(Request $request, $id_gd)
+    public function update(Request $request, $id)
     {
         // Validate input
         $request->validate([
             'name_gd' => 'required|string|max:255',
-            'code_gd' => 'required|numeric|unique:gedung,code_gd,' . $id_gd,
-            'price_gd' => 'required|numeric',
+            'code_gd' => 'required|string|unique:gedung,code_gd,' . $id,
+            'price_gd' => 'required|integer|min:0',
             'stock_gd' => 'required|integer|min:0',
             'status_gd' => 'required|boolean'
         ]);
 
         // Update building
-        $gedung = Gedung::findOrFail($id_gd);
+        $gedung = Gedung::findOrFail($id);
         $gedung->update($request->all());
 
         // Redirect with a success message
-        return redirect()->route('kategori.create')->with('success', 'Building updated successfully!');
+        return redirect()->route('admin.manageGedung')->with('success', 'Building updated successfully!');
     }
 
     // Delete a building (optional)
-    public function destroy($id_gd)
+    public function destroy($id)
     {
-        Gedung::destroy($id_gd);
+        Gedung::destroy($id);
 
-        return redirect()->route('gedung.show')->with('success', 'Building deleted successfully!');
+        return redirect()->route('admin.manageGedung')->with('success', 'Building deleted successfully!');
     }
 }
