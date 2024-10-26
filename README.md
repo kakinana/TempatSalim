@@ -29,3 +29,7 @@ Tujuan dari proyek ini adalah untuk:
   * Melihat profil akun
   * Edit profil
     
+### Screen Capture Gambar Schema Project dari Database
+![Screenshot (5362)](https://github.com/user-attachments/assets/5b2e89be-9d3d-48b8-82ec-9c600c33403e)
+
+### Screen Record Demo - Penjelasan Website
