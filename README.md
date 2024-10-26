@@ -18,12 +18,12 @@ Tujuan dari proyek ini adalah untuk:
   * Registrasi akun user
   * Mengelola data pelanggan (user), kategori, dan unit gedung (CRUD)
   * Memproses pengajuan peminjaman atau penyewaan gedung
-  * 
+  * Membuat catatan peminjaman atau penyewaan gedung
+  * Membuat catatan pengembalian gedung
     
 **2. User**
   * Login
   * Homepage (melihat katalog gedung)
-  * Mengajukan peminjaman atau penyewaan gedung
   * Melihat pengajuan peminjaman atau penyewaan gedung
   * Melihat nominal denda (ketika terlambat membuat laporan pengembalian)
   * Melihat profil akun
