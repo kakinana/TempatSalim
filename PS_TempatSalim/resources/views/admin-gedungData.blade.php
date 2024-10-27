@@ -22,9 +22,9 @@
             <thead>
                 <tr>
                     <th class="py-3 px-6 text-left">Code</th>
-                    <th class="py-3 px-6 text-left">Name</th>
-                    <th class="py-3 px-6 text-left">Price</th>
-                    <th class="py-3 px-6 text-left">Stock</th>
+                    <th class="py-3 px-6 text-left">Nama</th>
+                    <th class="py-3 px-6 text-left">Harga</th>
+                    <th class="py-3 px-6 text-left">Stok Unit</th>
                     <th class="py-3 px-6 text-left">Status</th>
                     <th class="py-3 px-6 text-center">Actions</th>
                 </tr>

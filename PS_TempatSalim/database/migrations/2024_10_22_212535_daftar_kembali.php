@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreign('id_rent')->references('id_rent')->on('daftar_pinjam');
             
             $table->date('date_return');
+            $table->boolean("returned")->default(0);
             $table->integer("penalty")->default(0);
             $table->timestamps();
 
