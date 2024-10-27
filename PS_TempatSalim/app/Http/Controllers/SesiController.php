@@ -70,7 +70,7 @@ class SesiController extends Controller
 
         $user = User::where('username', $request->username)->first();
 
-        if ($user && Crypt::decryptString($request->password) === ($user->password)) {
+        if ($user && Crypt::decryptString($user->password) === ($request->password)) {
             Auth::login($user);
             $role = $user->role;
 

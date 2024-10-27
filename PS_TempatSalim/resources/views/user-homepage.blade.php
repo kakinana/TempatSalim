@@ -1,81 +1,91 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage User</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 h-screen flex font-sans">
 
-@section('title', 'Homepage Admin')
+    <!-- Sidebar -->
+    <aside class="w-64 bg-yellow-600 text-white flex flex-col justify-between p-6">
+        <div>
+            <h2 class="text-2xl font-bold mb-8">TEMPAT SALIM</h2>
+            <nav>
+                <a href="{{ route('user.homepage') }}" class="flex items-center py-2 text-indigo-100 hover:text-white">
+                    <span class="mr-3">🏠</span> Homepage
+                </a>
+                <a href="#" class="flex items-center py-2 text-indigo-100 hover:text-white">
+                    <span class="mr-3">👥</span> Ajukan Penyewaan
+                </a>
+                <a href="#" class="flex items-center py-2 text-indigo-100 hover:text-white">
+                    <span class="mr-3">📂</span> Riwayat Penyewaan
+                </a>
+            </nav>
+        </div>
+    </aside>
 
-@section('content')
-<!-- Header Banner -->
-<div class="relative bg-cover bg-center h-96" style="background-image: url('path_to_image.jpg');">
-    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white">
-        <h1 class="text-4xl font-bold mb-4">Solutions for Quality Elderly Care</h1>
-        <p class="text-lg">Providing the best care solutions for elderly with love and compassion.</p>
+    <!-- Main content -->
+    <div class="flex-1 p-6">
+        <header class="flex justify-between items-center mb-6">
+            <input type="text" placeholder="Search..." class="w-80 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-300">
+            <div class="flex items-center">
+                <img src="https://via.placeholder.com/30" alt="Profile Picture" class="w-8 h-8 rounded-full mr-2">
+                @if(auth()->check())
+                    <span class="text-x5 font-bold p-6">{{ auth()->user()->nama }}</span>
+                @else
+                    <span class="text-x5 font-bold p-6">Nama tidak tersedia</span>
+                @endif
+            </div>
+        </header>
+
+        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            @if($kategori instanceof \Illuminate\Database\Eloquent\Collection)
+                @foreach($kategori as $k)
+                    <a href="#">
+                        <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="#">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $k->name_ct }}</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $k->detail_ct }}</p>
+
+                        <!-- Display related gedungs -->
+                        @foreach($k->gedungs as $g)
+                            <a href="{{ route('gedung.show', ['id' => $g->id]) }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Take a peek
+                                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                </svg>
+                            </a>
+                        @endforeach
+                    </div>
+                @endforeach
+            @else
+                <a href="#">
+                    <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
+                </a>
+                <div class="p-5">
+                    <a href="#">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $kategori->name_ct }}</h5>
+                    </a>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $kategori->detail_ct }}</p>
+
+                    <!-- Display related gedungs -->
+                    @foreach($kategori->gedungs as $g)
+                        <a href="{{ route('gedung.show', ['id' => $g->id]) }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Take a peek
+                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                            </svg>
+                        </a>
+                    @endforeach
+                </div>
+            @endif
+        </div>
     </div>
 </div>
-
-<!-- Service Cards Section -->
-<section class="py-12 bg-gray-100">
-    <div class="container mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-10">Our Services</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @foreach ($categories as $category)
-            <div class="bg-white shadow-lg rounded-lg hover:scale-105 transform transition-all duration-300">
-                <div class="p-6">
-                    <div class="icon mb-4">
-                        <img src="path_to_icon.png" alt="icon" class="mx-auto w-16 h-16">
-                    </div>
-                    <h5 class="text-xl font-semibold mb-2">{{ $category->name }}</h5>
-                    <p class="text-gray-700 mb-4">{{ $category->description }}</p>
-                    <a href="{{ url('/categories', $category->id) }}" class="inline-block bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600">Learn More</a>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-
-<!-- Statistics Section -->
-<section class="py-12 bg-red-100">
-    <div class="container mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div>
-                <h3 class="text-4xl font-bold text-red-600">39</h3>
-                <p class="text-gray-600">Best Nurses</p>
-            </div>
-            <div>
-                <h3 class="text-4xl font-bold text-red-600">129k</h3>
-                <p class="text-gray-600">Happy Seniors</p>
-            </div>
-            <div>
-                <h3 class="text-4xl font-bold text-red-600">29</h3>
-                <p class="text-gray-600">Expert Doctors</p>
-            </div>
-            <div>
-                <h3 class="text-4xl font-bold text-red-600">289k</h3>
-                <p class="text-gray-600">Seniors Club Members</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- About Us and Testimonial Section -->
-<section class="py-12 bg-gray-50">
-    <div class="container mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-                <h2 class="text-3xl font-bold mb-4">Why Choose Us</h2>
-                <p class="text-gray-700 mb-4">We cater to emotional, physical, and independent living needs for elderly individuals with care and empathy.</p>
-                <ul class="list-disc pl-5 text-gray-600">
-                    <li class="mb-2">Emotional Needs</li>
-                    <li>Independent Living</li>
-                </ul>
-            </div>
-            <div>
-                <h2 class="text-3xl font-bold mb-4">Testimonial</h2>
-                <blockquote class="border-l-4 border-red-500 pl-4 italic text-gray-700">
-                    “This care center has made my elderly parent's life much better with specialized care and attention.”
-                </blockquote>
-                <p class="mt-4 text-right">- John Doe, Designer</p>
-            </div>
-        </div>
-    </div>
-</section>
-@endsection
+</body>
+</html>

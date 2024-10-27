@@ -19,9 +19,9 @@ return new class extends Migration
             $table->unsignedBigInteger('id_gd');
             $table->foreign('id_gd')->references('id')->on('gedung')->onUpdate('cascade')->onDelete('cascade');
 
+            $table->integer("unit_rent");
             $table->date("date_rent");
             $table->date("date_due");
-            $table->boolean("returned")->default(0);
             $table->timestamps();
         });
     }

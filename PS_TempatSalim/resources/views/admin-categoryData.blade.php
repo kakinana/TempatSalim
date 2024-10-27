@@ -26,6 +26,7 @@
                         <tr>
                             <th class="py-3 px-6 text-center">No</th>
                             <th class="py-3 px-6 text-center">Category Name</th>
+                            <th class="py-3 px-6 text-center">Detail</th>
                             <th class="py-3 px-6 text-center">Status</th>
                             <th class="py-3 px-6 text-center">Actions</th>
                         </tr>
@@ -35,7 +36,8 @@
                     <tr>
                         <td class="py-3 px-6 text-center">{{ $loop->iteration }}</td>
                         <td class="py-3 px-6 text-center">{{ $k->name_ct }}</td>
-                        <td class="py-3 px-6 text-center">{{ $k->status_ct ? 'Available' : 'Not Available' }}</td>
+                        <td class="py-3 px-6 text-center">{{ $k->detail_ct }}</td>
+                        <td class="py-3 px-6 text-center">{{ $k->status_ct ? 'Tersedia' : 'Tidak Tersedia' }}</td>
                         <td class="py-3 px-6 text-center">
                             <div class="flex justify-center space-x-2">
                                 <!-- Edit Button -->

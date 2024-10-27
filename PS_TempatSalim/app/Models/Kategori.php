@@ -17,8 +17,8 @@ class Kategori extends Model
         'status_ct'
     ];
 
-    public function gedung()
+    public function gedungs()
     {
-        return $this->belongsToMany(Gedung::class, 'kategori_gedung', 'id_ct', 'id_gd');
+        return $this->belongsToMany(Gedung::class, 'kategori_gedung', 'id_ct', 'id_gd')->using(Kategori_Gedung::class);
     }
 }
